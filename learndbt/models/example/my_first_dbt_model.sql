@@ -9,17 +9,17 @@
 
 {{
   config(
-    materialized = 'table', alias = 'first_model'
+    materialized = 'table', alias = 'first_model', tags="nightly"
     )
 }}
 
 with source_data as (
 
-    select 1 as id
+    select 1 as id, 'NJ' as state, '2020-02-01 00:02:00.000'::timestamp as updated_at
     union all
-    select null as id
+    select null as id, 'CT' as state, '2020-01-01 00:00:00.000'::timestamp as updated_at
     union all
-    select 3 as id
+    select 4 as id, 'VT' as state, '2020-01-01 00:00:00.000'::timestamp as updated_at
 
 )
 
